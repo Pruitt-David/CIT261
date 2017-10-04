@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>David Pruitts Homepage for CIT261</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h1> David Pruitt's Assessment 1</h1>
+       <h2>Javascript can do many things, allow me to demonstate some proficiency with it.</h2> 
+        
+        <p id="changeMessage">Here is an example message to change</p>
+        <button type="button" onclick='document.getElementById("changeMessage").innerHTML = "We changed the text!"'>Click on me to change text</button>
+        
+        <h2>There are many things that can be accomplished with Javascript, its not nearly as powerful as c++ but it is however very similar.</h2>
+        
+        <h2>We can do Loops</h2>
+        <h3>Here is a For Loop</h3>
+        <p id="forLoop"></p>
+        <button onClick="myForLoop()"> Loop ten times</button>
+        <script>    
+            function myForLoop() {
+                var x = "", i;
+                for (i = 0; i < 10; i++) {
+                    x = x + "For Loop Count: " + i + "<br>";
+                }
+                document.getElementById("forLoop").innerHTML = x;
+            }
+        </script>
+        <h3>Here is a While Loop</h3>
+        <p id="whileLoop"></p>
+        <button onclick="myWhileLoop()">WhileLoop</button>
+        <script>
+            function myWhileLoop(){
+                var text = "";
+                var i = 0;
+                while(i < 10){
+                    text += "The number is " + i + "<br>";
+                    i++;
+                }
+                document.getElementById("whileLoop").innerHTML = text;
+            }
+        </script>
+        
+        <h3>Finally here is the Rare do-while loop</h3>
+        <p id="doWhileLoop"></p>
+        <button onclick="myDoWhileLoop()">Do-While Loop</button>
+        <script>
+            function myDoWhileLoop(){
+                var text = "";
+                var num = 1;
+                do{
+                    text += num + " ";
+                    num++;
+                }
+                while(num < 101);
+                
+                document.getElementById("doWhileLoop").innerHTML = text;
+                
+            }
+        </script>
+        
+        <h2>Now that we go Loops out of the way we should focus on some of the better things in life such as Conditionals!</h2>
+        <h3>First as always is the simple "IF" statement</h3>
+        
+        <button onclick="myIfStatement()">Is 10 Greater then 11?</button>
+        <script>
+            function myIfStatement(){
+                var x = 10;
+                var y = 11;
+                if(x > y){
+                    document.getElementById("myIfStatement").innerHTML = "True";
+                }else{
+                    document.getElementById("myIfStatement").innerHTML = "False";
+                }
+            }
+        </script>
+        <p id="myIfStatement"></p>
+        <h2>How about variables?  I know that variables have got to exist to some capacity in JavaScript</h2>
+        <h3>Your Right In JavaScript we use Var to declare any variable.</h3>
+        <h4>To write out any variables in Javascipt of a specific type you would just need to write in a script tag the following.<br>
+        Var x = 1; // Integer<br>
+        Var y = 1.1 // Float<br>
+        Var z = "String Text"  // String
+        </h4>
+        <h2> How about Functions?</h2>
+        <h3>Functions work just as they do in C++, they also can take parameters.</h3>
+        <script>
+            function myGreet(text){
+                document.getElementById("myGreet").innerHTML = text;
+            }
+        </script>
+        <form>
+            <input type="button" onclick="myGreet('Hello Inspector')" value="Say Hi">
+            <input type="button" onclick="myGreet('GoodBye Inspector')" value="Say Bye">
+        </form> 
+        <p id="myGreet"></p>
+        
+        <h2>How about Arrays can they be used too?</h2>
+        <h3>Certainly, lets give you an example with the following using an array</h3>
+        <script>
+            var videoGames = ["Halo", " HearthStone", " Sim City"];
+            document.getElementById("VG").innerHTML = videoGames;
+        </script>
+        <p>How about some video Game examples</p>
+        <p id="VG"></p>
+        <p id="XTRA"></p>
+        <script>
+            var xt = ["Civilizations V", " Civilization VI"];
+            document.getElementById("XTRA").innerHTML = xt;
+        </script>
+        <h3>In CS235 we get some advanced functionality with arrays, we also have some of the in this case.  For example we can pop off an item from an array</h3>
+        
+        Contents of the array<p id="part1"></p>
+        Contents of the array after popping off a value.<p id="part2"></p>
+
+        <script>
+            var colors = ["Red", " Orange", " Yellow", " Green", " Blue", " Purple"];
+            document.getElementById("part1").innerHTML = colors;
+            colors.pop();
+            document.getElementById("part2").innerHTML = colors;
+        </script>
+        <h3>Finally an associative array</h3>
+        <p>This works just like a map would with linking a value to a key.  In my scenario I will give you the primary colors as even numbers and secondary colors as odd numbers assoiated with the key.</p>
+        <script>
+            var myArray ={
+                key1: 'Red',
+                key2: 'Orange',
+                key3: 'Yellow',
+                key4: 'Green',
+                key5: 'Blue',
+                key6: 'Purple'
+            };
+            document.getElementById("zero").innerHTML = myArray[0];
+            document.getElementById("one").innerHTML = myArray[1];
+            document.getElementById("two").innerHTML = myArray[2];
+            document.getElementById("three").innerHTML = myArray[3];
+            document.getElementById("four").innerHTML = myArray[4];
+            document.getElementById("five").innerHTML = myArray[5];
+            
+        </script>
+        <p id="zero"></p>
+        <p id="one"></p>
+        <p id="two"></p>
+        <p id="three"></p>
+        <p id="four"></p>
+        <p id="five"></p>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
