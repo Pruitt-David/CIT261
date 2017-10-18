@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CIT261 Assessment 6</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+    </head>
+    <body>
+        <h1> David Pruitt's Assessment 6</h1>
+        <h2>DOM manipulation using Create Element</h2>
+        <div id="div1">
+            <p>Here is some text written in a p tag on line 12</p>
+        </div>    
+        <script>
+            document.body.onload = addElement;
+            function addElement(){
+                var newDiv = document.createElement("div");
+                var newText = document.createTextNode("This text was written on line 18, dynamically added an element to a page.")
+                newDiv.appendChild(newText); // Add the newText node to newDiv
+                var currentDiv = document.getElementById("div1");
+                document.body.insertBefore(newDiv, currentDiv);
+            }
+        </script>
+    
+        <h2>AppendChild</h2>
+        <h3>Will add a new child object to the end</h3>
+        <ul id="myAppendList">
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+        <button onclick="myAppendFunction()">Append children</button>
+        <script>
+            function myAppendFunction() {
+                var node = document.createElement("li");
+                var textnode = document.createTextNode("New Item");
+                node.appendChild(textnode);
+                document.getElementById("myAppendList").appendChild(node);
+            }
+        </script>
+    
+    
+        <h2>InsertBefore</h2>
+        <h3>Will add a new child object to the Begining</h3>
+        <ul id="myInsertBefore">
+            <li>First</li>
+            <li>Second</li>
+        </ul>
+        <button onclick="myInsertBefore()">Try it</button>
+        <script>
+            function myInsertBefore() {
+                var newItem = document.createElement("li");
+                var textnode = document.createTextNode("Third");
+                newItem.appendChild(textnode);
+
+                var list = document.getElementById("myInsertBefore");
+                list.insertBefore(newItem, list.childNodes[0]);
+            }
+        </script>
+        
+        
+        <h2>RemoveChild</h2>
+        <h3>Notice anything missing from this list?</h3>
+        <div id="div2">
+            <p id="p1">One</p>
+            <p id="p2">Two</p>
+            <p id="p3">Three</p>
+            <p id="p4">Four</p>
+            <p id="p5">Five</p>
+        </div>
+        <script>
+            var parent = document.getElementById("div2")
+            var child = document.getElementById("p2");
+            parent.removeChild(child);
+        </script>
+        
+        <h2>Extra for your Excetera clause</h2>
+        <h3>Here is an example where I take the tag h2 and copy it to a p tag.</h3>
+        <h2 id="Extra">I am so High and Mighty as a h2 Tag and so much better then a p Tag</h2>
+        <p id="Extra2">X</p>
+
+        <script>
+            document.getElementById("Extra2").innerHTML = document.getElementById("Extra").innerHTML;
+        </script>
+    
+    </body>
+</html>
+
