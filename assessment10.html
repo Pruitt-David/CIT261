@@ -7,11 +7,31 @@
     <body>
         <h1> David Pruitt's Assessment 10</h1>
         <h2>Videos in HTML</h2>
-        <video></video>
+        <h3>Here is a video of us making a video for this class.</h3>
+        <video controls autoplay poster="Title.png">
+                <source src="2017-10-18%2012-13-35.mp4" type="video/mp4">
+                <source src="2017-10-18%2012-13-35.mp4" type="video/ogg">
+                Your browser does not support HTML5 video.
+            </video>   
         <h2>Audio for HTML</h2>
-        <audio></audio>
+        <h3>How about a Daft Punk Song - Cresendolls</h3>
+        <audio controls>
+            <source src="Crescendolls.mp3" type="audio/ogg">
+            <source src="Crescendolls.mp3" type="audio/mpeg">
+            <source src="Crescendolls.mp3" type="audio/wav">
+            Your Browser does not support the Audio element
+        </audio>
         <h2>Canvas</h2>
-        <canvas></canvas>
+        <canvas id="myCanvas"></canvas>
+
+        <script>
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#FF0000";
+            <!-- X Axis, Y Axis, Length, Height -->
+            ctx.fillRect(0, 60, 110, 100);
+
+        </script>
     </body>
 </html>
 

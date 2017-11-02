@@ -7,10 +7,106 @@
     <body>
         <h1> David Pruitt's Assessment 2</h1>
         <h2>Object Creation Functions</h2>
+        <h3>Lets make an object using Javascript</h3>
+        
+        <h4>Name</h4>
+        <p id="javaOb0"></p>
+        <h4>Type</h4>
+        <p id="javaOb1"></p>
+        <h4>Platform</h4>
+        <p id="javaOb2"></p>
+        <h4>Producer</h4>
+        <p id="javaOb3"></p>
+
+        <h3>In this example we have a new object with the a name, type, platform, and producer.  They all have different variable for the same object.</h3>
+        
+        <p id="javaOb4"></p>
+        
+        <h3>Allowing us to add them all to a line as is shown above for the entire list of the objects varaibles.</h3>
+        
+        <script>
+            var game = { name:"Sim City",  
+                        type:"Strategy", 
+                        platform:"Video Game", 
+                        producer:"EAGames",
+                        fullProduct: function() {
+                        return this.name + " " + this.type + " " + this.platform + " " + this.producer;
+                       }
+            };
+            document.getElementById("javaOb0").innerHTML = game.name;
+            document.getElementById("javaOb1").innerHTML = game.type;
+            document.getElementById("javaOb2").innerHTML = game.platform;
+            document.getElementById("javaOb3").innerHTML = game.producer;
+            document.getElementById("javaOb4").innerHTML = game.fullProduct();
+        </script>
+        
         <h2>Inheritance</h2>
+        <h3> Now for some inherited characteristics.  I have a father, mother, and me of type object person.  Each of these has a first, last, eye color, age and nationality.  I will not set the nationality of the people but set the person to be american and have the inherited quality of each of the varaibles to be Americans.</h3>
+        <p id="javaInherit"></p>
+
+        <script>
+            function Person(first, last, age, eye) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.eyeColor = eye;
+                this.nationality = "American";
+            }
+
+            var myFather = new Person("David", "Pruitt", 76, "Green");
+            var myMother = new Person("Carrie", "Thompson", 56, "Blue");
+            var me = new Person("David", "Pruitt", 27, "Hazel");
+
+            document.getElementById("javaInherit").innerHTML =
+                "My father is " + myFather.nationality + ". My mother is " + myMother.nationality + ". I am an" + me.nationality + ".";
+
+        </script>
+        
         <h2>Properties</h2>
+        <h3> This allows me to add more variable or methods to a already existing object.  To go back to my Inheritence anaolgy it goes like this.  </h3>
+        
+        
+        <p id="properties"></p>
+        <h3>This was done by adding a property to the already made person object.</h3>
+
+        <script>
+            function Person(first, last, age, eye) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.eyeColor = eye;
+            }       
+            Person.prototype.nationality = "American";
+
+            var me = new Person("John", "Doe", 50, "blue");
+            document.getElementById("properties").innerHTML =
+                "I am an " + me.nationality + "." ; 
+        </script>
+        
         <h2>Methods</h2>
+        <h3>Its the same principle as adding a property but instead it will add a method.</h3>
+        
+        <p id="method"></p>
+
+        <script>
+            function Person(first, last, age, eye) {
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.eyeColor = eye;
+            }
+            Person.prototype.name = function() {
+                return this.firstName + " " + this.lastName
+            };
+
+            var me = new Person("David", "Pruitt", 27, "Hazel");
+            document.getElementById("method").innerHTML =
+                "My name is " + me.name() + "."; 
+        </script>
+        
+        
         <h2>Instantiation</h2>
+        <h3>Although I feel as though I have already instantiated many objects.  However for clarity to instantiate an object all you need to do is make an object such as person or car, then use the "new" when making a varaible from the object such as var myCar = new Car();</h3>        
     </body>
 </html>
 

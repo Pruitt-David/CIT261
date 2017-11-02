@@ -7,10 +7,23 @@
     <body>
         <h1> David Pruitt's Assessment 3</h1>
         <h2>JSON Parse</h2>
-        <p>This will give the variables of the string given to be parsed such as name and class / race</p>
+        <h3>To Parse and object, is to get data from an object out for another format.  </h3>
+        <p id="Parse"></p>
+        <h3>As in this example provided above you can see that the person variable in the code had three properties.  A name, age, an eye Color.  I was able to parse out of the variable the assigned values for each.  The case being David, 27, Hazel.</h3>
+        <script>
+            var person = JSON.parse('{ "name":"David", "Age":27, "eyeColor":"Hazel"}');
+            document.getElementById("Parse").innerHTML = person.name + " " + person.Age + " " + person.eyeColor;     
+        </script>
+        
         <h2>Stringify</h2>
-        <p>This will give me the entire string with the name: name ect...</p>
-    
+        <h3>The purpose of Parse is to get the values of each type, whereas the purpose of stringify is to get the whole content, properties listed with their values.</h3>
+        <p id="StringMe"></p>
+        <h3>As you can see in the above example the full content of the varaible videogame is displayed.  That is its name, year, and type.  These all also include the values which are stored with them.</h3>
+        <script>
+            var VideoGame = { "Name":"Sim City", "Year":2000, "Type":"Simulation"};
+            var stringy = JSON.stringify(VideoGame);
+            document.getElementById("StringMe").innerHTML = stringy;
+        </script>        
     </body>
 </html>
 
