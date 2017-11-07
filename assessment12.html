@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>David Pruitts assessment 12 for CIT261</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style> 
+            div {
+                width: 100px;
+                height: 100px;
+                background: green;
+                position: relative;
+                -webkit-animation: mymove 2s infinite;  /* Chrome, Safari, Opera */
+                -webkit-animation-play-state: paused;  /* Chrome, Safari, Opera */
+                animation: mymove 2s infinite;
+                animation-play-state: paused;
+            }
+
+            @-webkit-keyframes mymove {
+                from {left: 0px;}
+                to {left: 200px;}
+            }
+
+            @keyframes mymove {
+                from {left: 100px;}
+                to {left: 600px;}
+            }   
+        </style>
+    </head>
+    <body>
+        <h1> David Pruitt's Assessment 13</h1>
+        <h2>Design, Define, and Trigger CSS3 Transforms</h2>
+        <h3>Click the buttons to Play/Pause the animation:</h3>
+        <button onclick="myPlayFunction()">Play</button>
+        <button onclick="myPauseFunction()">Pause</button>
+
+        <script>
+            function myPlayFunction() {
+                document.getElementById("box").style.WebkitAnimationPlayState = "running";
+                document.getElementById("box").style.animationPlayState = "running";
+            }
+
+            function myPauseFunction() {
+                document.getElementById("box").style.WebkitAnimationPlayState = "paused";
+                document.getElementById("box").style.animationPlayState = "paused";
+            }
+        </script>
+        <div id="box"></div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -64,11 +64,24 @@
         <br/>
         <br/>
         <br/>
+    <h2>Triggers for Transitions and Animations</h2>
+        <h3>Click the buttons to Play/Pause the animation:</h3>
+        <button onclick="myPlayFunction()">Play</button>
+        <button onclick="myPauseFunction()">Pause</button>
+
+        <script>
+            function myPlayFunction() {
+                document.getElementById("box").style.WebkitAnimationPlayState = "running";
+                document.getElementById("box").style.animationPlayState = "running";
+            }
+
+            function myPauseFunction() {
+                document.getElementById("box").style.WebkitAnimationPlayState = "paused";
+                document.getElementById("box").style.animationPlayState = "paused";
+            }
+        </script>
+        <div id="box"></div>
         
-        
-        <h2>Triggers for Transitions and Animations</h2>
-    
-        </style>
     </body>
 </html>
 

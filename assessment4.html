@@ -7,6 +7,36 @@
     <body>
         <h1> David Pruitt's Assessment 4</h1>
          <h2>Using XMLHTTPRequest to consume a JSON web service</h2>
+            <div id="linkage"></div>
+        <script>
+            var myArray = [
+                {
+                    "display": "Sentient Games Website",
+                    "url": "www.sentient-games.com"
+                },
+                {
+                    "display": "Google Home Website",
+                    "url": "https://www.google.com"
+                },
+                {
+                    "display": "CSS Tutorial",
+                    "url": "https://www.w3schools.com/css/default.asp"
+                }
+            ];
+
+            myFunction(myArray);
+            
+            function myFunction(arr) {
+                var out = "";
+                var i;
+                for(i = 0; i < arr.length; i++) {
+                    out += '<a href="' + arr[i].url + '">' + 
+                        arr[i].display + '</a><br>';
+                }
+                document.getElementById("linkage").innerHTML = out;
+            }
+        </script>
+        
     </body>
 </html>
 
