@@ -90,8 +90,8 @@
             }
         </script>
         <form>
-            <input type="button" onclick="myGreet('Hello Inspector')" value="Say Hi">
-            <input type="button" onclick="myGreet('GoodBye Inspector')" value="Say Bye">
+            <input type="button" onclick="myGreet('Hello')" value="Say Hi">
+            <input type="button" onclick="myGreet('GoodBye')" value="Say Bye">
         </form> 
         <p id="myGreet"></p>
         
@@ -120,30 +120,22 @@
             document.getElementById("part2").innerHTML = colors;
         </script>
         <h3>Finally an associative array</h3>
-        <p>This works just like a map would with linking a value to a key.  In my scenario I will give you the primary colors as even numbers and secondary colors as odd numbers assoiated with the key.</p>
+        <p>There are two things to know about an associatice array, first they are not the same as a basic array.  Check the console and you will see that it outputs Anaheim from the selected city in the associative array.<br/>Second an associate array uses a key value to identify what is the content, this works like a map or a hash table.</p>
         <script>
-            var myArray ={
-                key1: 'Red',
-                key2: 'Orange',
-                key3: 'Yellow',
-                key4: 'Green',
-                key5: 'Blue',
-                key6: 'Purple'
-            };
-            document.getElementById("zero").innerHTML = myArray[0];
-            document.getElementById("one").innerHTML = myArray[1];
-            document.getElementById("two").innerHTML = myArray[2];
-            document.getElementById("three").innerHTML = myArray[3];
-            document.getElementById("four").innerHTML = myArray[4];
-            document.getElementById("five").innerHTML = myArray[5];
-            
+            var basicArray = new Array();
+            basicArray[0] = "Anaheim";
+            basicArray[1] = "Fullerton";
+            basicArray[2] = "Garden Grove";
+            console.log(basicArray.length);
+
+            var associativeArray = new Array();
+            associativeArray['city'] = "Anaheim";
+            associativeArray['state'] = "California";
+            associativeArray['country'] = "United States";
+            console.log(associativeArray.length);
+            console.log("City is: " + associativeArray['city']);
+            console.log("City is: " + associativeArray.city); 
         </script>
-        <p id="zero"></p>
-        <p id="one"></p>
-        <p id="two"></p>
-        <p id="three"></p>
-        <p id="four"></p>
-        <p id="five"></p>
     </body>
 </html>
 
