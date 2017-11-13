@@ -3,40 +3,73 @@
     <head>
         <title>CIT261 Assessment 4</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="jquery-1.11.2.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#btnGetWeather').click(function () {
+                    var requestData = $('#txtCity').val() + '.' + $('#txtCountry').val();
+                    var resultElement = $('#resultDiv');
+                    
+                    $.ajax({
+                        url: 'http://api.openweathermap.org/data/2.5/weather', method: 'get',
+                        data: { q: requestData },
+                        dataType: 'json',
+                        success: function(data){
+                            if(data.message != null){
+                                resultElement.html(data.message);
+                            }
+                            else{
+                            resultElement.html('Weather: ' + data.weather[0].main + '<br/>' + 'Description: ' + data.weather[0].description);
+                            }
+                        } 
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         <h1> David Pruitt's Assessment 4</h1>
-         <h2>Using XMLHTTPRequest to consume a JSON web service</h2>
-            <div id="linkage"></div>
-        <script>
-            var myArray = [
-                {
-                    "display": "Sentient Games Website",
-                    "url": "www.sentient-games.com"
-                },
-                {
-                    "display": "Google Home Website",
-                    "url": "https://www.google.com"
-                },
-                {
-                    "display": "CSS Tutorial",
-                    "url": "https://www.w3schools.com/css/default.asp"
-                }
-            ];
-
-            myFunction(myArray);
-            
-            function myFunction(arr) {
-                var out = "";
-                var i;
-                for(i = 0; i < arr.length; i++) {
-                    out += '<a href="' + arr[i].url + '">' + 
-                        arr[i].display + '</a><br>';
-                }
-                document.getElementById("linkage").innerHTML = out;
-            }
-        </script>
+        <h2>Using XMLHTTPRequest to consume a JSON web service</h2>
+        <h3>Lets make a weather app within the service</h3>
         
+        <table>
+            <tr>
+                <td>City</td>
+                <td><Input type="text" id="txtCity"/></td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td><input type="text" id="txtCountry"/></td>
+            </tr>
+        </table>
+        <input type="button" id="btnGetWeather" value="Get Weater Data">
+        
+        <div id="resultDiv"></div>
+        <h3>For whatever reason I do not have access to this content, however I feel that this is a valid way to get services.  Lets try another example</h3>
+        
+        <h2>Using XMLHTTPRequest from information That I have access to already</h2>
+        
+        <h3>Here is a div tag that I will populate.</h3>
+        <p id="demo_obj"></p>
+        <script>
+            // Make a new request
+            var xmlhttp = new XMLHttpRequest();
+            
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    var person = JSON.parse(this.responseText);
+                    document.getElementById("demo_obj").innerHTML =
+                        "<br/>Name "
+                        + person.name + "<br/>Age "
+                        + person.age + "<br/>Color " 
+                        + person.color + "<br/>isMarried? "
+                        + person.married;
+                }
+            };
+            xmlhttp.open("GET", "person.txt", true);
+            xmlhttp.send();
+        </script>
+        <h3>I have a person.txt file that is populating into this div tag and outputing this data.</h3>
     </body>
 </html>
 

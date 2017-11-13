@@ -1,16 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <h4>Credit to this website: 
+            <a href="http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/">http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/</a></h4>
         <title>CIT261 Assessment 9</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body>
+    <body onload="init()">
         <h1> David Pruitt's Assessment 9</h1>
+        
         <h2>Javascript Events</h2>
-        <h3>onTouchBegin</h3>
-        <h3>onLoad</h3>
-        <h3>Extra for Events using Javascript</h3>
-        <h2>Animation and Transition events</h2>
+        
+        <p>Probably one of the simplest events in Javascript is the Date</p>
+        
+        <button onclick="document.getElementById('date').innerHTML=Date()">What time is it currently?</button>
+        
+        <p id="date"></p>
+                
+        <h2>onLoad</h2>
+        
+        <h3>When the page loads it should send an alert that says "Page is Loaded"</h3>
+        
+    
+        <div id="draw_touch"></div>
+
+        <div id="draw_mouse">
+                <h1>Draw with a Mouse</h1>
+                
+                <canvas class="canvasStuff" id="sketchpad" width="400" height="300" style="border:1px solid #ffffff;"></canvas>
+                <br>
+                <input type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
+            </div>
+        
+        <script type="text/javascript">
+            var canvas,ctx;
+            var mouseX,mouseY,mouseDown=0;
+                    
+            var touchX,touchY;
+            function drawDot(ctx,x,y,size) {
+               r=255; g=0; b=0; a=255; // red
+                ctx.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI*2, true); 
+                ctx.closePath();
+                ctx.fill();
+            }
+            
+            function clearCanvas(canvas,ctx) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            function sketchpad_mouseDown() {
+                mouseDown=1;
+                drawDot(ctx,mouseX,mouseY,12);
+            }
+            
+            function sketchpad_mouseUp() {
+                mouseDown=0;
+            }
+            
+            function sketchpad_mouseMove(e) { 
+                getMousePos(e);
+                if (mouseDown==1) {
+                    drawDot(ctx,mouseX,mouseY,12);
+                }
+            }
+            
+            function getMousePos(e) {
+                if (!e)
+                    var e = event;
+                if (e.offsetX) {
+                    mouseX = e.offsetX;
+                    mouseY = e.offsetY;
+                }
+                else if (e.layerX) {
+                    mouseX = e.layerX;
+                    mouseY = e.layerY;
+                }
+            }
+            
+            function sketchpad_touchStart() {
+                getTouchPos();
+                drawDot(ctx,touchX,touchY,12);
+                event.preventDefault();
+            }
+            
+            function sketchpad_touchMove(e) { 
+                getTouchPos(e);
+                drawDot(ctx,touchX,touchY,12); 
+            }
+            
+            function getTouchPos(e) {
+                if (!e)
+                    var e = event;
+                if(e.touches) {
+                    if (e.touches.length == 1) { 
+                        var touch = e.touches[0];  
+                        touchX=touch.pageX-touch.target.offsetLeft;
+                        touchY=touch.pageY-touch.target.offsetTop;
+                    }
+                }
+            }
+            
+            function init() {
+                canvas = document.getElementById('sketchpad');
+                if (canvas.getContext)
+                    ctx = canvas.getContext('2d');
+                if (ctx) {
+                    canvas.addEventListener('mousedown', sketchpad_mouseDown, false);
+                    canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
+                    window.addEventListener('mouseup', sketchpad_mouseUp, false);
+                            
+                    canvas.addEventListener('touchstart', sketchpad_touchStart, false);
+                    canvas.addEventListener('touchmove', sketchpad_touchMove, false);
+                    myOnLoadFunction();
+                }
+            }
+        
+            function myOnLoadFunction(){
+                alert("Page is loaded");
+            }
+            
+        </script>
+            <h3>This canvas should demonstrate all of the different things you could do if you got crazy with it.  It will have red ink and will use events such if the mouse button is down, if it is up, if its touching the canvas or not, and nicely it allows you to doodle over and over again with the clear button.</h3>
     </body>
 </html>
 

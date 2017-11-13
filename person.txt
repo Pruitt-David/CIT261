@@ -1,0 +1,6 @@
+{
+    "name":"David Pruitt",
+    "age": 27,
+    "color":" Neon green",
+    "married":"Yes"
+}

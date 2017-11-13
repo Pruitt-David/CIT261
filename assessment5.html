@@ -5,12 +5,69 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h1> David Pruitt's Assessment 5</h1>
-        <h2>Local Storage API</h2>
-        <h2>Storing and Retriving Simple Data</h2>
+        <h1>David Pruitts Assessment 5</h1>
+        <h2>Local Storage</h2>
+        <h2>Local Storage - Storing and retrieving simple data</h2>
+        <h4>This first demonstration will store and retrieve the data in two different ways.</h4>
+        
+        <h2 class="colorOne" id="one"></h2>
+        <h3>Should say red</h3>
+        
+        <h2 class="colorTwo" id="two"></h2>
+        <h3>Should say Blue</h3>
+                
+        <script> 
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem("colorOne", "Red");
+                document.getElementById("one").innerHTML = localStorage.getItem("colorOne");
+            } else {
+                document.getElementById("one").innerHTML = "Try a different Browser";
+            }
+            
+            localStorage.colorTwo = "Blue";
+            document.getElementById("two").innerHTML = localStorage.colorTwo;
+            </script>   
+            
+        <h2>Session Storage</h2>
+        <h3>This demonstration will create a new session object, 
+                then keep track of how many cookies the user generated in the session.</h3>
+        <h3>Make a cookie man!</h3>
+        <br>
+        <button onclick="counter()" type="button">Make Cookies</button>
+        <img id="three">
+        <p id="number"></p>
+        <h3>After you have clicked the button a giant cookie should appear as well as a count of how many times you have clicked in the website.</h3>
+        
+        <script>
+            function counter() {
+                if(typeof(Storage) !== "undefined") {
+                    if (sessionStorage.clickcount) {
+                        sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+                    } else
+                        sessionStorage.clickcount = 1;
+                    document.getElementById("three").src = "cookie.jpg" 
+                    
+                    document.getElementById("number").innerHTML = sessionStorage.clickcount;
+                } else {
+                    document.getElementById("number").innerHTML = "Try a different browser";
+                }
+            }
+        </script>
+           
         <h2>Arrays</h2>
-        <h2>Associative Arrays</h2>
-        <h2>Objects</h2>
+        <h3>Lets display the color you gave me.  This was stored in an array.</h3>
+        <p id="four"></p>
+        <script>
+            if (typeof(Storage) !== "undefined") {
+                var colors = [];
+                colors[0] = prompt("Give us your color.");
+                localStorage.setItem("colors", JSON.stringify(colors));
+                var storedNames = JSON.parse(localStorage.getItem("colors"));
+                document.getElementById("four").innerHTML = storedNames;
+            } else {
+                document.getElementById("four").innerHTML = "Try a different browser";
+            }
+        </script>
     </body>
 </html>
 
